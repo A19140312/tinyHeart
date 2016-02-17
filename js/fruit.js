@@ -52,6 +52,10 @@ fruitObj.prototype.born = function(i){
 	else this.fruitType[i] = "orange";
 }
 
+fruitObj.prototype.eaten = function(i){
+	this.alive[i] = false;
+}
+
 function fruitNums(){
 	var num = 0;
 	for(var i = 0 ; i < fruit.num ; i ++){
@@ -73,3 +77,4 @@ function sendFruit(){
 		}
 	}
 }
+

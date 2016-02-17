@@ -48,6 +48,7 @@ function gameloop(){
 
 	context1.clearRect(0 , 0 , 800 , 600);
 	mom.draw();
+	monFruit ();
 }
 
 function onMouseMove(e){
