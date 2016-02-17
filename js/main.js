@@ -3,6 +3,7 @@ var context1,context2;
 var lastTime,deltaTime;
 var bgPic = new Image();
 var ane,fruit,mom;
+var mx , my;
 
 document.body.onload = function(){
 	init();
@@ -17,6 +18,8 @@ function init(){
 	context1 = canvas1.getContext("2d");
 	context2 = canvas2.getContext("2d");
 
+	canvas1.addEventListener("mousemove" , onMouseMove , false);
+
 	bgPic.src = "./src/background.jpg";
 
 	ane = new aneObj();
@@ -27,6 +30,9 @@ function init(){
 
 	mom = new momObj();
 	mom.init();
+
+	mx = 400;
+	my = 300;
 }
 
 function gameloop(){
@@ -42,4 +48,11 @@ function gameloop(){
 
 	context1.clearRect(0 , 0 , 800 , 600);
 	mom.draw();
+}
+
+function onMouseMove(e){
+	if(e.offSetX || e.layerX){
+		mx = e.offSetX || e.layerX;
+		my = e.offSetY || e.layerY;
+	}
 }
