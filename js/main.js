@@ -2,7 +2,7 @@ var canvas1,canvas2;
 var context1,context2;
 var lastTime,deltaTime;
 var bgPic = new Image();
-var ane,fruit;
+var ane,fruit,mom;
 
 document.body.onload = function(){
 	init();
@@ -18,10 +18,15 @@ function init(){
 	context2 = canvas2.getContext("2d");
 
 	bgPic.src = "./src/background.jpg";
+
 	ane = new aneObj();
 	ane.init();
+
 	fruit = new fruitObj();
 	fruit.init();
+
+	mom = new momObj();
+	mom.init();
 }
 
 function gameloop(){
@@ -34,4 +39,7 @@ function gameloop(){
 	ane.draw();
 	fruitNums();
 	fruit.draw();
+
+	context1.clearRect(0 , 0 , 800 , 600);
+	mom.draw();
 }
