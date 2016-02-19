@@ -6,6 +6,7 @@ var ane, fruit, mom, baby;
 var mx , my;
 var canvasWidth = 800;
 var canvasHeight = 600;
+var babyTail = [];
 
 document.body.onload = function(){
 	init();
@@ -38,6 +39,11 @@ function init(){
 
 	baby = new babyObj();
 	baby.init();
+
+	for(var i = 0 ; i < 8 ; i ++){
+		babyTail[i] = new Image();
+		babyTail[i].src = "./src/babyTail" + i + ".png";
+	}
 }
 
 function gameloop(){
