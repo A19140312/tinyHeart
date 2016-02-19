@@ -7,7 +7,7 @@ var mx , my;
 var canvasWidth = 800;
 var canvasHeight = 600;
 var babyTail = [], bigTail = [];
-var babyEye = [];
+var babyEye = [], bigEye = [];
 
 document.body.onload = function(){
 	init();
@@ -50,7 +50,9 @@ function init(){
 
 	for(var i = 0 ; i < 2 ; i ++){
 		babyEye[i] = new Image();
+		bigEye[i] = new Image();
 		babyEye[i].src = "./src/babyEye" + i + ".png";
+		bigEye[i].src = "./src/bigEye" + i + ".png";
 	}
 }
 

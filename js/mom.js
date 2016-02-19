@@ -8,6 +8,10 @@ var momObj = function(){
 
 	this.bigTailNum = 0;
 	this.bigTailTimer = 0;
+
+	this.bigEyeTimer = 0;
+	this.bigEyeNum = 0;
+	this.bigEyeInterval = 1000;
 }
 
 momObj.prototype.init = function(){
@@ -37,13 +41,24 @@ momObj.prototype.draw = function(){
 		this.bigTailTimer %= 50;
 	}
 
+	this.bigEyeTimer += deltaTime;
+	if(this.bigEyeTimer > this.bigEyeInterval){
+		this.bigEyeNum = (this.bigEyeNum + 1) % 2;
+		this.bigEyeTimer %= this.bigEyeInterval;
+
+		if(this.bigEyeNum == 0){
+			this.bigEyeInterval = Math.random() * 1000 + 2000;
+		}
+		else this.bigEyeInterval = 200;
+	}
+
 	context1.save();
 	context1.translate(this.x , this.y);
 	context1.rotate(this.angle);
 
 	context1.drawImage(bigTail[this.bigTailNum], -bigTail[this.bigTailNum].width * 0.5 + 30 , -bigTail[this.bigTailNum].height * 0.5);
 	context1.drawImage(this.bigBody, -this.bigBody.width * 0.5 , -this.bigBody.height * 0.5);
-	context1.drawImage(this.bigEye , -this.bigEye.width * 0.5 , -this.bigEye.height * 0.5);
+	context1.drawImage(bigEye[this.bigEyeNum] ,-bigEye[this.bigEyeNum].width * 0.5 , -bigEye[this.bigEyeNum].height * 0.5);
 	
 	context1.restore();
 }
