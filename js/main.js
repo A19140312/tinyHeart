@@ -2,8 +2,10 @@ var canvas1,canvas2;
 var context1,context2;
 var lastTime,deltaTime;
 var bgPic = new Image();
-var ane,fruit,mom;
+var ane, fruit, mom, baby;
 var mx , my;
+var canvasWidth = 800;
+var canvasHeight = 600;
 
 document.body.onload = function(){
 	init();
@@ -31,8 +33,11 @@ function init(){
 	mom = new momObj();
 	mom.init();
 
-	mx = 400;
-	my = 300;
+	mx = canvasWidth * 0.5;
+	my = canvasHeight * 0.5;
+
+	baby = new babyObj();
+	baby.init();
 }
 
 function gameloop(){
@@ -47,9 +52,11 @@ function gameloop(){
 	fruitNums();
 	fruit.draw();
 
-	context1.clearRect(0 , 0 , 800 , 600);
+	context1.clearRect(0 , 0 , canvasWidth , canvasHeight);
 	mom.draw();
 	monFruit ();
+
+	baby.draw();
 }
 
 function onMouseMove(e){
