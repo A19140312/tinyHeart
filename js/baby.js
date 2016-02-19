@@ -7,6 +7,10 @@ var babyObj = function(){
 
 	this.babyTailTimer = 0;
 	this.babyTailNum = 0;
+
+	this.babyEyeTimer = 0;
+	this.babyEyeNum = 0;
+	this.babyEyeInterval = 1000;
 }
 babyObj.prototype.init = function(){
 	this.x = canvasWidth * 0.5 - 50;
@@ -32,12 +36,23 @@ babyObj.prototype.draw = function(){
 	}
 	/*console.log(this.babyTailNum);*/
 
+	this.babyEyeTimer += deltaTime;
+	if(this.babyEyeTimer > this.babyEyeInterval){
+		this.babyEyeNum = (this.babyEyeNum + 1) % 2;
+		this.babyEyeTimer %= this.babyEyeInterval;
+
+		if(this.babyEyeNum == 0){
+			this.babyEyeInterval = Math.random() * 1000 + 2000;
+		}
+		else this.babyEyeInterval = 200;
+	}
+
 	context1.save();
 	context1.translate(this.x , this.y);
 	context1.rotate(this.angle);
 	context1.drawImage(babyTail[this.babyTailNum],-babyTail[this.babyTailNum].width * 0.5 + 25 , -babyTail[this.babyTailNum].height * 0.5);
 	context1.drawImage(this.babyBody,-this.babyBody.width * 0.5 , -this.babyBody.height * 0.5);
-	context1.drawImage(this.babyEye ,-this.babyEye.width * 0.5 , -this.babyEye.height * 0.5);
+	context1.drawImage(babyEye[this.babyEyeNum] ,-babyEye[this.babyEyeNum].width * 0.5 , -babyEye[this.babyEyeNum].height * 0.5);
 
 	context1.restore();
 

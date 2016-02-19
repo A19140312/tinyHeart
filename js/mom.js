@@ -6,6 +6,8 @@ var momObj = function(){
 	this.bigBody = new Image();
 	this.bigTail = new Image();
 
+	this.bigTailNum = 0;
+	this.bigTailTimer = 0;
 }
 
 momObj.prototype.init = function(){
@@ -29,11 +31,17 @@ momObj.prototype.draw = function(){
 	var deltangle = Math.atan2(deltaY , deltaX) + Math.PI;
 	this.angle = lerpAngle(deltangle, this.angle, 0.6);
 
+	this.bigTailTimer += deltaTime;
+	if(this.bigTailTimer > 50){
+		this.bigTailNum = (this.bigTailNum + 1) % 8;
+		this.bigTailTimer %= 50;
+	}
+
 	context1.save();
 	context1.translate(this.x , this.y);
 	context1.rotate(this.angle);
 
-	context1.drawImage(this.bigTail, -this.bigTail.width * 0.5 + 30 , -this.bigTail.height * 0.5);
+	context1.drawImage(bigTail[this.bigTailNum], -bigTail[this.bigTailNum].width * 0.5 + 30 , -bigTail[this.bigTailNum].height * 0.5);
 	context1.drawImage(this.bigBody, -this.bigBody.width * 0.5 , -this.bigBody.height * 0.5);
 	context1.drawImage(this.bigEye , -this.bigEye.width * 0.5 , -this.bigEye.height * 0.5);
 	

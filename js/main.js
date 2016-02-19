@@ -6,7 +6,8 @@ var ane, fruit, mom, baby;
 var mx , my;
 var canvasWidth = 800;
 var canvasHeight = 600;
-var babyTail = [];
+var babyTail = [], bigTail = [];
+var babyEye = [];
 
 document.body.onload = function(){
 	init();
@@ -42,7 +43,14 @@ function init(){
 
 	for(var i = 0 ; i < 8 ; i ++){
 		babyTail[i] = new Image();
+		bigTail[i] = new Image();
 		babyTail[i].src = "./src/babyTail" + i + ".png";
+		bigTail[i].src = "./src/bigTail" + i + ".png";
+	}
+
+	for(var i = 0 ; i < 2 ; i ++){
+		babyEye[i] = new Image();
+		babyEye[i].src = "./src/babyEye" + i + ".png";
 	}
 }
 
