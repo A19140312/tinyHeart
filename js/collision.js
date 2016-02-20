@@ -10,3 +10,11 @@ function monFruit () {
 		}
 	}
 }
+
+function momBaby(){
+
+	var l = calLength2(mom.x , mom.y , baby.x , baby.y);
+	if(l < 900){
+		baby.babyBodyNum = 0;
+	}
+}

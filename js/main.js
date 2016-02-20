@@ -7,7 +7,7 @@ var mx , my;
 var canvasWidth = 800;
 var canvasHeight = 600;
 var babyTail = [], bigTail = [];
-var babyEye = [], bigEye = [];
+var babyEye = [], bigEye = [] , babyBody = [];
 
 document.body.onload = function(){
 	init();
@@ -54,6 +54,11 @@ function init(){
 		babyEye[i].src = "./src/babyEye" + i + ".png";
 		bigEye[i].src = "./src/bigEye" + i + ".png";
 	}
+
+	for(var i = 0 ; i < 20 ; i ++){
+		babyBody[i] = new Image();
+		babyBody[i].src = "./src/babyFade" + i + ".png";
+	}
 }
 
 function gameloop(){
@@ -73,6 +78,7 @@ function gameloop(){
 	monFruit ();
 
 	baby.draw();
+	momBaby();
 }
 
 function onMouseMove(e){
