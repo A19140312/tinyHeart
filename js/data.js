@@ -21,6 +21,19 @@ dataObj.prototype.draw = function(){
 		if(this.alpha > 1)this.alpha = 1;
 		context1.fillStyle = "rgba(255, 255, 255," + this.alpha + ")";
 		context1.fillText("Game Over" , w * 0.5 , h * 0.5);
+		context1.fillText(tryAgain , w * 0.5 , h * 0.5 + 50);
+		if(ax > w * 0.5 - context1.measureText(tryAgain).width * 0.5 && ax < w * 0.5 + context1.measureText(tryAgain).width * 0.5 && ay > h * 0.5  + 20 && ay < h * 0.5 + 60){
+			
+			this.alpha = 0;
+			ax = 0,ay = 0;
+			baby.babyBodyNum = 0;
+			mom.bigBodyNum = 0;
+			this.score = 0;
+			this.fruitNum = 0;
+			this.double = 1;
+			this.gameOver = false;
+		}
+
 	}
 	context1.restore();
 }

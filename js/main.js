@@ -3,12 +3,12 @@ var context1,context2;
 var lastTime,deltaTime;
 var bgPic = new Image();
 var ane, fruit, mom, baby;
-var mx , my;
+var mx , my , ax , ay;
 var canvasWidth = 800;
 var canvasHeight = 600;
 var babyTail = [], bigTail = [], bigBodyOra = [], bigBodyBlue = [];
 var babyEye = [], bigEye = [] , babyBody = [];
-var data;
+var data,tryAgain = "Try Again";
 
 document.body.onload = function(){
 	init();
@@ -24,7 +24,7 @@ function init(){
 	context2 = canvas2.getContext("2d");
 
 	canvas1.addEventListener("mousemove" , onMouseMove , false);
-
+	canvas1.addEventListener('mouseup',  doMouseUp, false);
 	bgPic.src = "./src/background.jpg";
 
 	ane = new aneObj();
@@ -98,5 +98,12 @@ function onMouseMove(e){
 	if(e.offSetX || e.layerX){
 		mx = e.offSetX || e.layerX;
 		my = e.offSetY || e.layerY;
+	}
+}
+function doMouseUp(e){
+
+	if(e.offSetX || e.layerX){
+		ax = e.offSetX || e.layerX;
+		ay = e.offSetY || e.layerY;
 	}
 }
