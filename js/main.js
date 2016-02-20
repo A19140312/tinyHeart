@@ -6,8 +6,9 @@ var ane, fruit, mom, baby;
 var mx , my;
 var canvasWidth = 800;
 var canvasHeight = 600;
-var babyTail = [], bigTail = [];
+var babyTail = [], bigTail = [], bigBodyOra = [], bigBodyBlue = [];
 var babyEye = [], bigEye = [] , babyBody = [];
+var data;
 
 document.body.onload = function(){
 	init();
@@ -46,6 +47,11 @@ function init(){
 		bigTail[i] = new Image();
 		babyTail[i].src = "./src/babyTail" + i + ".png";
 		bigTail[i].src = "./src/bigTail" + i + ".png";
+
+		bigBodyOra[i] = new Image();
+		bigBodyBlue[i] = new Image();
+		bigBodyOra[i].src = "./src/bigSwim" + i + ".png";
+		bigBodyBlue[i].src = "./src/bigSwimBlue" + i + ".png";
 	}
 
 	for(var i = 0 ; i < 2 ; i ++){
@@ -59,6 +65,10 @@ function init(){
 		babyBody[i] = new Image();
 		babyBody[i].src = "./src/babyFade" + i + ".png";
 	}
+
+	data = new dataObj();
+	context1.font = "30px Verdana";
+	context1.textAlign = "center";
 }
 
 function gameloop(){
@@ -79,9 +89,12 @@ function gameloop(){
 
 	baby.draw();
 	momBaby();
+
+	data.draw();
 }
 
 function onMouseMove(e){
+	if(!data.gameOver)
 	if(e.offSetX || e.layerX){
 		mx = e.offSetX || e.layerX;
 		my = e.offSetY || e.layerY;

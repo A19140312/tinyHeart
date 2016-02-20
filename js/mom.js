@@ -2,9 +2,6 @@ var momObj = function(){
 	this.x;
 	this.y;
 	this.angle;
-	this.bigEye = new Image();
-	this.bigBody = new Image();
-	this.bigTail = new Image();
 
 	this.bigTailNum = 0;
 	this.bigTailTimer = 0;
@@ -12,15 +9,14 @@ var momObj = function(){
 	this.bigEyeTimer = 0;
 	this.bigEyeNum = 0;
 	this.bigEyeInterval = 1000;
+
+	this.bigBodyNum = 0;
 }
 
 momObj.prototype.init = function(){
 	this.x = canvasWidth * 0.5;
 	this.y = canvasHeight * 0.5;
 	this.angle = 0;
-	this.bigEye.src = "./src/bigEye0.png";
-	this.bigBody.src = "./src/bigSwim0.png";
-	this.bigTail.src = "./src/bigTail0.png";
 }
 
 momObj.prototype.draw = function(){
@@ -57,7 +53,8 @@ momObj.prototype.draw = function(){
 	context1.rotate(this.angle);
 
 	context1.drawImage(bigTail[this.bigTailNum], -bigTail[this.bigTailNum].width * 0.5 + 30 , -bigTail[this.bigTailNum].height * 0.5);
-	context1.drawImage(this.bigBody, -this.bigBody.width * 0.5 , -this.bigBody.height * 0.5);
+	if(data.double == 1)context1.drawImage(bigBodyOra[this.bigBodyNum], -bigBodyOra[this.bigBodyNum].width * 0.5 , -bigBodyOra[this.bigBodyNum].height * 0.5);
+	else context1.drawImage(bigBodyBlue[this.bigBodyNum], -bigBodyBlue[this.bigBodyNum].width * 0.5 , -bigBodyBlue[this.bigBodyNum].height * 0.5);
 	context1.drawImage(bigEye[this.bigEyeNum] ,-bigEye[this.bigEyeNum].width * 0.5 , -bigEye[this.bigEyeNum].height * 0.5);
 	
 	context1.restore();
